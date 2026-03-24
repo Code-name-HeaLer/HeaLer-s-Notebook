@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Post": {
+      "title": "Post",
+      "description": "A blog post documenting an experiment or learning.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier" },
+        "title": { "type": "string", "description": "The title of the post" },
+        "slug": { "type": "string", "description": "URL-friendly slug" },
+        "content": { "type": "string", "description": "Markdown content" },
+        "summary": { "type": "string", "description": "Short summary for previews" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "status": { 
+          "type": "string", 
+          "enum": ["idea", "learning", "building", "failed", "success"] 
+        },
+        "reading_time": { "type": "integer" },
+        "featured": { "type": "boolean" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "slug", "content", "status", "created_at"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "A user comment on a blog post.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "post_id": { "type": "string" },
+        "name": { "type": "string" },
+        "content": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["post_id", "name", "content", "created_at"]
+    }
+  },
+  "firestore": {
+    "/posts/{postId}": {
+      "schema": "Post",
+      "description": "Collection of blog posts."
+    },
+    "/posts/{postId}/comments/{commentId}": {
+      "schema": "Comment",
+      "description": "Subcollection of comments for a specific post."
+    }
+  }
+}
