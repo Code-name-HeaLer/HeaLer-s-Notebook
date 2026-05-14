@@ -1,5 +1,8 @@
 # 🧠 HeaLer's Notebook
 
+> [!warning]
+> we back on github
+
 > A modern, minimal, tech-focused blog platform designed as a public **AI/ML engineering notebook** — built to document experiments, learnings, failures, and ideas in a clean, structured way.
 
 ---
